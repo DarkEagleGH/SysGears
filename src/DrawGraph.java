@@ -7,16 +7,12 @@ import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import javax.swing.*;
 
 // Modified package from stackoverflow.com
 
-@SuppressWarnings("serial")
 public class DrawGraph extends JPanel {
-    private static final int MAX_SCORE = 20;
     private static final int PREF_W = 800;
     private static final int PREF_H = 650;
     private static final int BORDER_GAP = 20;
@@ -25,7 +21,6 @@ public class DrawGraph extends JPanel {
     private static final Color GRAPH_GRID_COLOR = new Color(186, 186, 186, 180);
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f);
     private static final int GRAPH_POINT_WIDTH = 6;
-    private static final int Y_HATCH_CNT = 10;
     private double[] points;
     private int fieldDim;
     final static float dash1[] = {5.0f};
@@ -56,8 +51,6 @@ public class DrawGraph extends JPanel {
             graphPoints.add(new Point(x1, y1));
         }
         graphPoints.add(graphPoints.get(0));
-//        int x1 = (int) (((int)points[0]) * xScale + BORDER_GAP);
-//        int y1 = (int) ((fieldDim + 1 - ((int)((points[0]-((int)points[0]))*100))) * yScale + BORDER_GAP);
 
         // create x and y axes
         g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, BORDER_GAP, BORDER_GAP);
@@ -112,7 +105,6 @@ public class DrawGraph extends JPanel {
 
     public static void createAndShowGui(double[] points, int fieldDim) {
         DrawGraph mainPanel = new DrawGraph(points, fieldDim);
-
         JFrame frame = new JFrame("DrawGraph");
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.getContentPane().add(mainPanel);
