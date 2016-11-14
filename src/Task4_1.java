@@ -13,7 +13,8 @@ public class Task4_1 {
                 if (arrSize > 1) {
                     double[] arr = fillArray(arrSize, DIM);
                     System.out.println("Random array: " + (arrToString(arr)));
-                    arr = sortByDirection(arr);
+                    Arrays.sort(arr);           //Sort ascending x,y
+                    arr = sortByDirection(arr); //Sort by angle relative to first point
                     System.out.println("Ordered array for drawing: " + (arrToString(arr)));
                     System.out.println();
                     DrawGraph.createAndShowGui(arr, DIM);
@@ -47,7 +48,7 @@ public class Task4_1 {
         fY = (int)((first-((int)first))*100);
         bY = (int)((B-((int)B))*100);
         cY = (int)((C-((int)C))*100);
-        if ((bX-fX)*(cY-bY)-(bY-fY)*(cX-bX)<0) {
+        if ((bX-fX)*(cY-bY)-(bY-fY)*(cX-bX) < 0) {
             return true;
         } else {
             return false;
@@ -65,15 +66,6 @@ public class Task4_1 {
             }
         }
         // sort rest of points
-/*        for (int i=1; i<arr.length; i++) {
-            for (int j=i; j<arr.length-1; j++) {
-                if (!righter(arr[0], arr[j], arr[j+1])) {
-                    double tmp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = tmp;
-                }
-            }
-        }*/
         for (int i=2; i<arr.length; i++) {
             int j = i;
             while (j>1 && righter(arr[0], arr[j-1], arr[j])) {
