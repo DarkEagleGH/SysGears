@@ -55,6 +55,9 @@ public class DrawGraph extends JPanel {
             int y1 = (int) ((fieldDim + 1 - ((int)((points[i]-((int)points[i]))*100))) * yScale + BORDER_GAP);
             graphPoints.add(new Point(x1, y1));
         }
+        graphPoints.add(graphPoints.get(0));
+//        int x1 = (int) (((int)points[0]) * xScale + BORDER_GAP);
+//        int y1 = (int) ((fieldDim + 1 - ((int)((points[0]-((int)points[0]))*100))) * yScale + BORDER_GAP);
 
         // create x and y axes
         g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, BORDER_GAP, BORDER_GAP);
@@ -108,13 +111,6 @@ public class DrawGraph extends JPanel {
     }
 
     public static void createAndShowGui(double[] points, int fieldDim) {
-        List<Integer> scores = new ArrayList<Integer>();
-        Random random = new Random();
-        int maxDataPoints = 16;
-        int maxScore = 20;
-        for (int i = 0; i < maxDataPoints ; i++) {
-            scores.add(random.nextInt(maxScore));
-        }
         DrawGraph mainPanel = new DrawGraph(points, fieldDim);
 
         JFrame frame = new JFrame("DrawGraph");
