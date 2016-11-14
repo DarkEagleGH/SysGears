@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Task4 {
     public static void main(String[] args) {
         final int DIM = 20;         //Field dimension
-        int arrSize;     //Num of elements
+        int arrSize;                //Num of elements
         Scanner sc = new Scanner(System.in);
         System.out.print("Input qty of points >2: ");
         while (sc.hasNext()) {
